@@ -6,7 +6,7 @@
 /*   By: ebroudic <ebroudic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 09:00:19 by ebroudic          #+#    #+#             */
-/*   Updated: 2024/12/04 11:25:00 by ebroudic         ###   ########.fr       */
+/*   Updated: 2024/12/04 15:24:19 by ebroudic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,20 +17,26 @@
 # include "libft/printf/ft_printf.h"
 # include "../minilibx-linux/mlx.h"
 
-# define TILES_HEIGHT 72
+# define TILES_SIZE 72
 
 typedef struct s_data
 {
 	void	*mlx_ptr;
 	void	*win_ptr;
-	void	*wall_ptr;
-	void	*floor_ptr;
+	void	*wall;
+	void	*floor;
+	void	*player;
+	int		player_x;
+	int		player_y;
+	void	*exit;
+	void	*collectible;
 	char		**map;
 }				t_data;
 
 int		close_window(t_data *data);
 int 	key_hook(int keycode, t_data *data);
-int		open_window(t_data *data);
+int		open_window(t_data *data, char **argv);
 void	initialize_data(char *argv, t_data *data);
+void	check_player(t_data *data);
 
 #endif
