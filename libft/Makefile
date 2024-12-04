@@ -30,6 +30,7 @@ SRCS = \
 	libft/ft_strjoin.c \
 	libft/ft_strlcat.c \
 	libft/ft_strlcpy.c \
+	libft/ft_strcpy.c \
 	libft/ft_strlen.c \
 	libft/ft_strmapi.c \
 	libft/ft_strncmp.c \
