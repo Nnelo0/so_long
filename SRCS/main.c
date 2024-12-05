@@ -6,7 +6,7 @@
 /*   By: ebroudic <ebroudic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 09:01:29 by ebroudic          #+#    #+#             */
-/*   Updated: 2024/12/04 15:27:09 by ebroudic         ###   ########.fr       */
+/*   Updated: 2024/12/05 13:16:22 by ebroudic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,8 @@ int	read_map(char *filename, t_data *data)
 	i = count_lines(filename);
 	fd = open(filename, O_RDONLY);
 	data->map = malloc(sizeof(char *) * (i + 1));
+	if (!data->map)
+		return (1);
 	i  = 0;
 	while (i < count_lines(filename))
 	{
@@ -138,11 +140,11 @@ void	load_images(t_data *data)
 	int width;
 	int height;
 
-	data->wall = mlx_xpm_file_to_image(data->mlx_ptr, "images/wall.xpm", &width, &height);
-	data->floor = mlx_xpm_file_to_image(data->mlx_ptr, "images/floor.xpm", &width, &height);
-	data->player = mlx_xpm_file_to_image(data->mlx_ptr, "images/wall.xpm", &width, &height);
-	data->exit = mlx_xpm_file_to_image(data->mlx_ptr, "images/wall.xpm", &width, &height);
-	data->collectible = mlx_xpm_file_to_image(data->mlx_ptr, "images/wall.xpm", &width, &height);
+	data->wall = mlx_xpm_file_to_image(data->mlx_ptr, "images/wall2.xpm", &width, &height);
+	data->floor = mlx_xpm_file_to_image(data->mlx_ptr, "images/road.xpm", &width, &height);
+	data->player = mlx_xpm_file_to_image(data->mlx_ptr, "images/purple_turtle.xpm", &width, &height);
+	data->exit = mlx_xpm_file_to_image(data->mlx_ptr, "images/manhole.xpm", &width, &height);
+	data->collectible = mlx_xpm_file_to_image(data->mlx_ptr, "images/pizza.xpm", &width, &height);
 }
 
 void	check_player( t_data *data)
@@ -166,17 +168,69 @@ void	check_player( t_data *data)
 		y++;
 	}
 }
+int count_collectibles(char *filename)
+{
+    int    	bit;
+    int     count;
+	int		fd;
+	char	c;
 
+	fd = open(filename, O_RDONLY);
+	count = 0;
+	bit = 1;
+	while (bit)
+	{
+		bit = read(fd, &c, 1);
+		if (bit == -1)
+			return(ft_printf("Error\n"));
+		if (c == 'C')
+			count++;
+	}
+	close (fd);
+	return (count);
+}
+void	exit_game(int new_x, int new_y ,t_data *data)
+{
+	if (data->map[new_y / 72][new_x / 72] == 'E')
+	{
+		if (data->count_collect == 0)
+			close_window(data);
+	}
+}
+
+void	collectibles(int new_x, int new_y ,t_data *data)
+{
+	if (data->map[new_y / 72][new_x / 72] == 'C')
+	{
+		data->count_collect -= 1;
+		data->map[new_y / 72][new_x / 72] = '0';
+	}
+}
 void	move_player(int keycode, t_data *data)
 {
+	int new_x;
+	int new_y;
+
+	new_x = data->player_x;
+	new_y = data->player_y;
+	
 	if (keycode == 'w')
-		data->player_y -= 72;
+		new_y -= 72;
 	if (keycode == 'a')
-		data->player_x -= 72;
+		new_x-= 72;
 	if (keycode == 's')
-		data->player_y += 72;
+		new_y += 72;
 	if (keycode == 'd')
-		data->player_x += 72;
+		new_x += 72;
+	collectibles(new_x, new_y, data);
+	exit_game(new_x, new_y, data);
+	if (data->map[new_y / 72][new_x / 72] != '1')
+	{
+		data->player_x = new_x;
+		data->player_y = new_y;
+		data->count_move += 1;
+		ft_printf("move -> %d\n", data->count_move);
+	}
 }
 
 int key_hook(int keycode, t_data *data)
@@ -202,6 +256,8 @@ int loop(t_data *data)
 
 int	open_window(t_data *data, char **argv)
 {	
+	data->count_move = 0;
+	data->count_collect = count_collectibles(argv[1]);
 	read_map(argv[1], data);
 	data->mlx_ptr = mlx_init();
 	data->win_ptr = mlx_new_window(data->mlx_ptr, (72 * count_carac(argv[1])), (72 * count_lines(argv[1])), "so_long");

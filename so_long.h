@@ -6,7 +6,7 @@
 /*   By: ebroudic <ebroudic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 09:00:19 by ebroudic          #+#    #+#             */
-/*   Updated: 2024/12/04 15:24:19 by ebroudic         ###   ########.fr       */
+/*   Updated: 2024/12/05 13:07:36 by ebroudic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,9 @@ typedef struct s_data
 	int		player_y;
 	void	*exit;
 	void	*collectible;
+	int		count_collect;
 	char		**map;
+	int		count_move;
 }				t_data;
 
 int		close_window(t_data *data);
