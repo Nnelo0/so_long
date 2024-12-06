@@ -6,7 +6,7 @@
 /*   By: nnelo <nnelo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 13:49:46 by ebroudic          #+#    #+#             */
-/*   Updated: 2024/10/24 21:21:10 by nnelo            ###   ########.fr       */
+/*   Updated: 2024/12/06 19:30:40 by nnelo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	char	*dsa;
-	size_t	slen;
 
 	if (s == NULL)
 		return (NULL);
@@ -23,7 +22,6 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		return (ft_strdup(""));
 	if (len > ft_strlen(s + start))
 		len = ft_strlen(s + start);
-	slen = ft_strlen(s);
 	dsa = malloc(len + 1);
 	if (dsa == NULL)
 		return (NULL);

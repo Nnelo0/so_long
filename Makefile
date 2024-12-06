@@ -1,7 +1,7 @@
 NAME = so_long
 CC = cc
 CFLAGS = -Wall -Werror -Wextra -I./minilibx-linux -L./minilibx-linux -lmlx -lXext -lX11 -lm
-SRCS = SRCS/main.c SRCS/check_map.c SRCS/error.c SRCS/map.c SRCS/move_player.c SRCS/check_map_utils.c \
+SRCS = SRCS/main.c SRCS/check_map.c SRCS/error.c SRCS/map.c SRCS/move_player.c SRCS/utils.c \
 
 LIBFTDIR = libft
 LIBFT = $(LIBFTDIR)/libft.a

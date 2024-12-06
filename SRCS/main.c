@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ebroudic <ebroudic@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nnelo <nnelo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 09:01:29 by ebroudic          #+#    #+#             */
-/*   Updated: 2024/12/05 15:55:42 by ebroudic         ###   ########.fr       */
+/*   Updated: 2024/12/06 19:57:33 by nnelo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,10 +74,16 @@ int	open_window(t_data *data, char **argv)
 int	main(int argc, char **argv)
 {
 	t_data	data;
+	int		fd;
 
 	if (argc != 2)
-		return (ft_printf("Error\n"));
+		return (ft_printf("Error\nInvalid number of argument\n"));
 	if (argc == 2)
+	{
+		fd = open(argv[1], O_RDONLY);
+		if (fd == -1)
+			return (ft_printf("Error\nInvalid argument\n"));
 		open_window(&data, argv);
+	}
 	return (0);
 }

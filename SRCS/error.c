@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ebroudic <ebroudic@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nnelo <nnelo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 15:48:45 by ebroudic          #+#    #+#             */
-/*   Updated: 2024/12/05 16:05:56 by ebroudic         ###   ########.fr       */
+/*   Updated: 2024/12/06 19:59:03 by nnelo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,13 @@ int	close_window(t_data *data)
 	return (0);
 }
 
-void	error(t_data *data)
+void	error(t_data *data, char *str)
 {
 	int	i;
 
 	i = 0;
 	(void)data;
-	ft_printf("Error\n");
+	write(2, str, ft_strlen(str));
 	while (data->map[i])
 	{
 		free(data->map[i]);

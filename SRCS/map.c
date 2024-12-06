@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ebroudic <ebroudic@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nnelo <nnelo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 15:46:02 by ebroudic          #+#    #+#             */
-/*   Updated: 2024/12/06 11:50:42 by ebroudic         ###   ########.fr       */
+/*   Updated: 2024/12/06 20:08:42 by nnelo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	read_map(char *filename, t_data *data)
 	int		fd;
 	char	*line;
 
-	i = count_lines(filename); //faire gestion d erreur
+	i = count_lines(filename);
 	fd = open(filename, O_RDONLY);
 	data->map = malloc(sizeof(char *) * (i + 1));
 	if (!data->map)
@@ -51,7 +51,7 @@ int	count_carac(char *filename)
 	{
 		bit = read(fd, &c, 1);
 		if (bit == -1)
-			return (ft_printf("Error\n"));
+			return (ft_printf("Error\nCan't read the files\n"));
 		if (c == '\n')
 			break ;
 		if (bit == 1)
@@ -75,7 +75,7 @@ int	count_lines(char *filename)
 	{
 		bit = read(fd, &c, 1);
 		if (bit == -1)
-			return (ft_printf("Error\n"));
+			return (ft_printf("Error\nCan't read the files\n"));
 		if (c == '\n')
 			count++;
 	}
@@ -95,16 +95,7 @@ void	load_map(t_data data)
 		x = 0;
 		while (data.map[y][x])
 		{
-			if (data.map[y][x] == '1')
-				mlx_put_image_to_window(data.mlx_ptr, data.win_ptr, data.wall, x * 72, y * 72);
-			else if (x * 72 == data.player_x && y * 72 == data.player_y)
-				mlx_put_image_to_window(data.mlx_ptr, data.win_ptr, data.player, data.player_x, data.player_y);
-			else if (data.map[y][x] == '0' || data.map[y][x] == 'P')
-				mlx_put_image_to_window(data.mlx_ptr, data.win_ptr, data.floor, x * 72, y * 72);
-			else if (data.map[y][x] == 'C')
-				mlx_put_image_to_window(data.mlx_ptr, data.win_ptr, data.collectible, x * 72, y * 72);
-			else if (data.map[y][x] == 'E')
-				mlx_put_image_to_window(data.mlx_ptr, data.win_ptr, data.exit, x * 72, y * 72);
+			load_map_utils(data, x, y);
 			x++;
 		}
 		y++;
@@ -125,7 +116,7 @@ int	count_collectibles(char *filename)
 	{
 		bit = read(fd, &c, 1);
 		if (bit == -1)
-			return (ft_printf("Error\n"));
+			return (ft_printf("Error\nCan't read the files\n"));
 		if (c == 'C')
 			count++;
 	}
