@@ -50,6 +50,11 @@ static void	collectibles(int new_x, int new_y, t_data *data)
 		data->count_collect -= 1;
 		data->map[new_y / 72][new_x / 72] = '0';
 	}
+	if (data->count_collect == 0)
+	{
+		mlx_destroy_image(data->mlx_ptr, data->exit);
+		data->exit = mlx_xpm_file_to_image(data->mlx_ptr, "textures/manhole.xpm", &width, &height);
+	}
 }
 
 void	move_player(int keycode, t_data *data)
