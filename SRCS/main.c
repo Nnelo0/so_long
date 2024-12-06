@@ -6,7 +6,7 @@
 /*   By: nnelo <nnelo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 09:01:29 by ebroudic          #+#    #+#             */
-/*   Updated: 2024/12/06 19:57:33 by nnelo            ###   ########.fr       */
+/*   Updated: 2024/12/06 20:16:47 by nnelo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,15 @@ void	load_images(t_data *data)
 	int	height;
 
 	data->wall = mlx_xpm_file_to_image(data->mlx_ptr,
-			"images/wall2.xpm", &width, &height);
+			"textures/wall2.xpm", &width, &height);
 	data->floor = mlx_xpm_file_to_image(data->mlx_ptr,
-			"images/road.xpm", &width, &height);
+			"textures/road.xpm", &width, &height);
 	data->player = mlx_xpm_file_to_image(data->mlx_ptr,
-			"images/purple_turtle.xpm", &width, &height);
+			"textures/purple_turtle.xpm", &width, &height);
 	data->exit = mlx_xpm_file_to_image(data->mlx_ptr,
-			"images/manhole.xpm", &width, &height);
+			"textures/manhole.xpm", &width, &height);
 	data->collectible = mlx_xpm_file_to_image(data->mlx_ptr,
-			"images/pizza.xpm", &width, &height);
+			"textures/pizza.xpm", &width, &height);
 }
 
 int	key_hook(int keycode, t_data *data)
