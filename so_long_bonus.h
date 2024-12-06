@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   so_long_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nnelo <nnelo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/03 09:00:19 by ebroudic          #+#    #+#             */
-/*   Updated: 2024/12/06 23:56:05 by nnelo            ###   ########.fr       */
+/*   Created: 2024/12/07 00:34:35 by nnelo             #+#    #+#             */
+/*   Updated: 2024/12/07 00:35:22 by nnelo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#ifndef SO_LONG_BONUS_H
+# define SO_LONG_BONUS_H
 
 # include "libft/libft/libft.h"
 # include "libft/printf/ft_printf.h"

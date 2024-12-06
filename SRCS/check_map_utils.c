@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ebroudic <ebroudic@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nnelo <nnelo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 10:32:46 by ebroudic          #+#    #+#             */
-/*   Updated: 2024/12/06 12:39:58 by ebroudic         ###   ########.fr       */
+/*   Updated: 2024/12/07 00:36:35 by nnelo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ static void	flood_fill(char **map, int x, int y, int *valid)
 	if (map[y][x] == 'C' || map [y][x] == 'E')
 		(*valid)--;
 	map[y][x] = 'V';
-
 	flood_fill(map, x + 1, y, valid);
 	flood_fill(map, x - 1, y, valid);
 	flood_fill(map, x, y + 1, valid);
@@ -36,7 +35,7 @@ void	check_path(t_data *data)
 	valid = data->count_collect + data->count_ext;
 	map_copy = malloc(sizeof(char *) * (data->size_y + 1));
 	if (!map_copy)
-		error(data);
+		error(data, "Error\nmalloc error\n");
 	while (data->map[i])
 	{
 		map_copy[i] = ft_strdup(data->map[i]);
@@ -52,5 +51,5 @@ void	check_path(t_data *data)
 	}
 	free(map_copy);
 	if (valid != 0)
-		error(data);
+		error(data, "Error\nInvalid path in map\n");
 }

@@ -3,6 +3,7 @@ NAME_BONUS = so_long_bonus
 CC = cc
 CFLAGS = -Wall -Werror -Wextra -I./minilibx-linux -L./minilibx-linux -lmlx -lXext -lX11 -lm
 SRCS = SRCS/main.c SRCS/check_map.c SRCS/error.c SRCS/map.c SRCS/move_player.c SRCS/utils.c \
+
 BONUS =	SRCS_bonus/main.c SRCS_bonus/check_map.c SRCS_bonus/error.c SRCS_bonus/map.c \
 		SRCS_bonus/move_player.c SRCS_bonus/check_map_utils.c SRCS_bonus/move_player_utils.c \
 

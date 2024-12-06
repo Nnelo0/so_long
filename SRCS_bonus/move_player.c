@@ -6,7 +6,7 @@
 /*   By: nnelo <nnelo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 15:44:29 by ebroudic          #+#    #+#             */
-/*   Updated: 2024/12/07 00:13:34 by nnelo            ###   ########.fr       */
+/*   Updated: 2024/12/07 00:38:18 by nnelo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,12 @@ void	check_player( t_data *data)
 		y++;
 	}
 }
+
 static void	death_player(int new_x, int new_y, t_data *data)
 {
 	if (data->map[new_y / 72][new_x / 72] == 'S')
 	{
-		ft_printf("GAME OVER !\n");
+		ft_printf("GAME OVER!!\n");
 		close_window(data);
 	}
 }
@@ -48,7 +49,7 @@ static void	exit_game(int new_x, int new_y, t_data *data)
 	{
 		if (data->count_collect == 0)
 		{
-			ft_printf("You WIN !!\n");
+			ft_printf("You WIN with %d moves!!\n", data->count_move);
 			close_window(data);
 		}
 	}
@@ -58,7 +59,7 @@ static void	collectibles(int new_x, int new_y, t_data *data)
 {
 	int	width;
 	int	height;
-	
+
 	if (data->map[new_y / 72][new_x / 72] == 'C')
 	{
 		data->count_collect -= 1;
@@ -67,7 +68,8 @@ static void	collectibles(int new_x, int new_y, t_data *data)
 	if (data->count_collect == 0)
 	{
 		mlx_destroy_image(data->mlx_ptr, data->exit);
-		data->exit = mlx_xpm_file_to_image(data->mlx_ptr, "textures/manhole.xpm", &width, &height);
+		data->exit = mlx_xpm_file_to_image(data->mlx_ptr,
+				"textures/manhole.xpm", &width, &height);
 	}
 }
 
