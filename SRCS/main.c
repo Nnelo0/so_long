@@ -24,7 +24,7 @@ void	load_images(t_data *data)
 	data->player = mlx_xpm_file_to_image(data->mlx_ptr,
 			"textures/purple_turtle.xpm", &width, &height);
 	data->exit = mlx_xpm_file_to_image(data->mlx_ptr,
-			"textures/manhole.xpm", &width, &height);
+			"textures/manhole_close.xpm", &width, &height);
 	data->collectible = mlx_xpm_file_to_image(data->mlx_ptr,
 			"textures/pizza.xpm", &width, &height);
 }
