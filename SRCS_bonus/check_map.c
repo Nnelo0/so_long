@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnelo <nnelo@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ebroudic <ebroudic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 15:46:49 by ebroudic          #+#    #+#             */
-/*   Updated: 2024/12/07 00:11:11 by nnelo            ###   ########.fr       */
+/*   Updated: 2024/12/10 11:22:08 by ebroudic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,7 @@ void	check_map(t_data *data)
 		y++;
 	}
 	if (data->count_plr != 1 || data->count_ext != 1
-		|| data->count_collect == 0 || data->count_shred == 0)
+		|| data->count_collect == 0)
 		error(data, "Error\nInvalid map\n");
 	correct_map(data);
 }

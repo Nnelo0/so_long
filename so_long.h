@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnelo <nnelo@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ebroudic <ebroudic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 09:00:19 by ebroudic          #+#    #+#             */
-/*   Updated: 2024/12/06 20:03:26 by nnelo            ###   ########.fr       */
+/*   Updated: 2024/12/16 08:51:19 by ebroudic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ void	check_map(t_data *data);
 void	error(t_data *data, char *str);
 void	load_images(t_data *data);
 void	load_map(t_data data);
+int		ber(char **argv);
 void	load_map_utils(t_data data, int x, int y);
 int		read_map(char *filename, t_data *data);
 int		count_lines(char *filename);

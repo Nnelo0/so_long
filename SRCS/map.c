@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnelo <nnelo@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ebroudic <ebroudic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 15:46:02 by ebroudic          #+#    #+#             */
-/*   Updated: 2024/12/06 20:08:42 by nnelo            ###   ########.fr       */
+/*   Updated: 2024/12/10 12:58:20 by ebroudic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,10 @@ int	count_lines(char *filename)
 		if (c == '\n')
 			count++;
 	}
-	count++;
+	if (c == '\n')
+		exit(ft_printf("Error\nCan't print map\n"));
+	else
+		count++;
 	close (fd);
 	return (count);
 }

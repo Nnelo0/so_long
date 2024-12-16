@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnelo <nnelo@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ebroudic <ebroudic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 15:48:45 by ebroudic          #+#    #+#             */
-/*   Updated: 2024/12/07 00:11:15 by nnelo            ###   ########.fr       */
+/*   Updated: 2024/12/11 10:16:22 by ebroudic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,4 +50,26 @@ void	error(t_data *data, char *str)
 	}
 	free(data->map);
 	exit(1);
+}
+
+int	ber(char **argv)
+{
+	int		n;
+
+	n = ft_strlen(argv[1]);
+	if (n < 4)
+		return (1);
+	n -= 4;
+	if (argv[1][n] != '.')
+		return (1);
+	n++;
+	if (argv[1][n] != 'b')
+		return (1);
+	n++;
+	if (argv[1][n] != 'e')
+		return (1);
+	n++;
+	if (argv[1][n] != 'r')
+		return (1);
+	return (0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnelo <nnelo@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ebroudic <ebroudic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/07 00:34:35 by nnelo             #+#    #+#             */
-/*   Updated: 2024/12/07 00:35:22 by nnelo            ###   ########.fr       */
+/*   Created: 2024/12/10 11:23:07 by ebroudic          #+#    #+#             */
+/*   Updated: 2024/12/10 12:53:32 by ebroudic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ typedef struct s_data
 	int		size_x;
 	int		size_y;
 	void	*shredder;
-	int		count_shred;
 }				t_data;
 
 int		open_window(t_data *data, char **argv);
@@ -55,6 +54,7 @@ int		read_map(char *filename, t_data *data);
 int		count_lines(char *filename);
 int		count_carac_line(char *filename);
 int		close_window(t_data *data);
+int		ber(char **argv);
 void	check_path(t_data *data);
 void	display_move_counter(t_data *data);
 void	count_carac(t_data *data, int y, int x);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move_player_utils.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnelo <nnelo@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ebroudic <ebroudic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/06 23:18:22 by nnelo             #+#    #+#             */
-/*   Updated: 2024/12/07 00:33:43 by nnelo            ###   ########.fr       */
+/*   Created: 2024/12/10 11:22:29 by ebroudic          #+#    #+#             */
+/*   Updated: 2024/12/10 11:22:33 by ebroudic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,6 @@ void	count_carac(t_data *data, int y, int x)
 		data->count_plr += 1;
 	if (data->map[y][x] == 'E')
 		data->count_ext += 1;
-	if (data->map[y][x] == 'S')
-		data->count_shred += 1;
 }
 
 void	animation_player(int keycode, t_data *data, int new_x, int new_y)
